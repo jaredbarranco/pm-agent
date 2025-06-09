@@ -1,0 +1,28 @@
+{
+  "name": "pm-agent",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "initDbUsers": "dotenvx run -- ./scripts/create-db-users.sh",
+    "dev": "dotenvx run -- tsx src/cli/index.ts",
+    "test": "vitest",
+    "db:reset": "dotenvx run -- tsx scripts/resetMemory.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.44.1",
+    "openai": "^5.1.1",
+    "pg": "^8.16.0",
+    "zod": "^3.25.56"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.2"
+  }
+}

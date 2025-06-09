@@ -1,0 +1,25 @@
+#!/bin/bash
+set -euo pipefail
+
+# Defaults (can be overridden by env or .env)
+CONTAINER_NAME=${CONTAINER_NAME:-"agent-postgres"}
+POSTGRES_USER=${POSTGRES_USER:-poop}
+POSTGRES_PORT=${POSTGRES_PORT:-'5432'}
+AGENT_USER_PASSWORD=${AGENT_USER_PASSWORD:-changeme1}
+ADMIN_USER_PASSWORD=${ADMIN_USER_PASSWORD:-changeme2}
+POSTGRES_PASSWORD=${POSTGRES_PASS:-changeme3}
+
+echo "Running user creation SQL in container '${CONTAINER_NAME}' with user '${POSTGRES_USER}'..."
+
+docker exec \
+  -e PGPASSWORD="$POSTGRES_PASSWORD" \
+  -e AGENT_USER_PASSWORD="$AGENT_USER_PASSWORD" \
+  -e ADMIN_USER_PASSWORD="$ADMIN_USER_PASSWORD" \
+  -i "$CONTAINER_NAME" \
+  bash -c "
+    psql -U \"$POSTGRES_USER\" -v ON_ERROR_STOP=1 -d postgres <<EOF
+    ALTER ROLE agent WITH LOGIN PASSWORD '\$AGENT_USER_PASSWORD';
+    ALTER ROLE admin WITH LOGIN PASSWORD '\$ADMIN_USER_PASSWORD';
+EOF
+"
+
