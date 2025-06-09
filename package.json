@@ -1,6 +1,9 @@
 {
   "name": "pm-agent",
   "type": "module",
+  "bin": {
+    "pm-agent": "./src/cli/index.ts"
+  },
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

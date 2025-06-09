@@ -18,7 +18,7 @@ export const config: AppConfig = {
 		username: process.env.POSTGRES_USER || '',
 		password: process.env.POSTGRES_PASS || '',
 		connectionString: process.env.POSTGRES_CONNECTION_STRING ||
-			`postgresql://${process.env.POSTGRES_USER}:${process.env.PG_PASS}@${process.env.PG_HOST}:${process.env.PG_PORT}`
+			`postgresql://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASS}@${process.env.POSTGRES_HOST}:${process.env.POSTGRES_PORT}`
 	},
 	openAi: {
 		key: process.env.OPEN_API_KEY || ''
