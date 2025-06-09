@@ -18,6 +18,7 @@
   "description": "",
   "dependencies": {
     "@dotenvx/dotenvx": "^1.44.1",
+    "chrono-node": "^2.8.2",
     "openai": "^5.1.1",
     "pg": "^8.16.0",
     "zod": "^3.25.56"

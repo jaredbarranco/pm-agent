@@ -1,7 +1,8 @@
+#!/usr/bin/env tsx
+
 import { Command } from 'commander';
 import { config } from '../config/index.js';
 import { handleMeetingNotes } from '../agent/planner.js';
-
 
 const program = new Command();
 
