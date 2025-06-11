@@ -8,7 +8,23 @@ export type Task = {
 	status?: 'open' | 'complete' | 'expired';
 	due_date?: string; // ISO date
 };
-
+export async function create_task({
+	description,
+	owner,
+	due_date
+}: {
+	description: string;
+	owner?: string;
+	due_date?: string;
+}): Promise<Task> {
+	//@ts-ignore
+	const result: Task = await pool.query(`
+    INSERT INTO agent_memory.tasks (description, owner, due_date)
+    VALUES (${description}, ${owner || null}, ${due_date || null})
+    RETURNING id, description, owner, due_date, created_at;
+  `);
+	return result;
+}
 export async function createTask(task: Task): Promise<void> {
 	const { id, description, owner, context, status, due_date } = task;
 	await pool.query(`
