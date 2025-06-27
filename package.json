@@ -18,11 +18,17 @@
   "description": "",
   "dependencies": {
     "@dotenvx/dotenvx": "^1.44.1",
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "chrono-node": "^2.8.2",
+    "markdown-it": "^14.1.0",
+    "mcp-remote": "^0.1.14",
+    "node-cache": "^5.1.2",
     "openai": "^5.1.1",
     "pg": "^8.16.0",
     "zod": "^3.25.56"
   },
   "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^22.15.30",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
